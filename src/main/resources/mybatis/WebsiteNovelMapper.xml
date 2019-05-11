@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WebsiteNovel">
+    <update id="createTable" parameterType="long">
+        CREATE TABLE website_novel_#{websiteId}
+        (
+            `website_novel_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+            `novel_id`         bigint(20) unsigned NOT NULL unique,
+            `chapter`          longtext ,
+            `gmt_create`       datetime,
+            `gmt_modified`     datetime,
+            PRIMARY KEY (`website_novel_id`)
+        )
+    </update>
+    <select id="existTable" parameterType="string" resultType="int">
+        select count(*) from information_schema.tables where table_name=#{tableName} and table_schema="book"
+    </select>
+    <insert id="insert" keyColumn="website_novel_id" parameterType="map" useGeneratedKeys="true">
+        replace into website_novel_#{websiteId}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="novel.novelId != null">
+                novel_id,
+            </if>
+            <if test="novel.gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="novel.gmtModified != null">
+                gmt_modified,
+            </if>
+            <if test="novel.chapter != null">
+                chapter,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="novel.novelId != null">
+                #{novel.novelId,jdbcType=BIGINT},
+            </if>
+            <if test="novel.gmtCreate != null">
+                #{novel.gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="novel.gmtModified != null">
+                #{novel.gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="novel.chapter != null">
+                #{novel.chapter,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="map">
+        update website_novel_#{websiteId}
+        <set>
+            <if test="novel.novelId != null">
+                novel_id = #{novel.novelId,jdbcType=BIGINT},
+            </if>
+            <if test="novel.gmtCreate != null">
+                gmt_create = #{novel.gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="novel.gmtModified != null">
+                gmt_modified = #{novel.gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="novel.chapter != null">
+                chapter = #{novel.chapter,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where website_novel_id = #{novel.websiteNovelId,jdbcType=BIGINT}
+    </update>
+    <select id="findByNovelId" parameterType="map" resultType="entity.WebsiteNovelPO">
+        select * from website_novel_#{websiteId} where novel_id=#{novel_id}
+    </select>
+</mapper>

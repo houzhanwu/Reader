@@ -1,0 +1,56 @@
+//对json配置文件的注释
+
+//配置文件以数组形式保存，数组中为对象，对象的具体内容如下：
+
+//注：页面类型总共分为：1. 详情页：展示小说的标题、作者、简介等内容，2. 目录页：存放章节标题和链接地址；3. 内容页：小说具体内容
+
+//没有详情页、目录页的网站暂不支持，对应逻辑还需推敲
+
+//在数据库中的信息
+website_id: 网站对应ID，为系统自行设置，无需人工设置。若为0则表示还没有建立，或建立的数据库还没有更新到配置文件
+gmt_create: 创建时间
+gmt_modified: 更新时间
+is_delete: 是否删除
+
+//网站的总体信息
+website: 网站的根目录对应的正则表达式  此表达式应设置为能识别所有为此网站页面的链接地址，且应唯一。
+website_name: 网站名字
+website_url: 网站首页
+
+
+//小说详情页对应配置
+novel_detail: 小说详情页的URL规则，若为空则表示没有详情页。如没有详情页，则表示对应的小说标题、作者、简介为文中提取，
+novel_title: 小说标题的jsoup选择器规则
+novel_title_replace: 小说标题的删除内容（正则）
+novel_author: 小说作者的jsoup选择器
+novel_author_replace: 小说作者需要删除的内容（正则）
+novel_state: 小说状态所在位置
+novel_state_replace: 小说状态中需要删除的内容
+novel_state_end: 代表小说完结的字符串
+novel_state_not_end: 代表小说未完结的字符串
+novel_description: 小说简介的选择器
+novel_description_replace: 小说简介删除内容（正则）
+novel_category: 小说分类对应的选择器
+novel_category_replace: 小说分类中需要删除的字符串
+
+//小说目录页对应配置
+novel_catalog_url: 小说目录页的地址规则，若为空，表示没有目录页。如没有目录页，则下列所有选项无效，对应的章节名从文中解析
+novel_catalog_type: 小说目录页是否分页 0表示不分页，1表示分页
+novel_catalog_next: 当目录页是分页显示时，此项有效，表示下一页连接的选择器
+novel_catalog_next_text: 当目录页是分页显示时，此项有效，表示下一页连接选择所在的属性值
+novel_catalog_list: 目录页中的章节列表所在的位置
+novel_catalog_list_text: 目录中章节列表连接的属性值，不能为空
+
+//小说内容页对应配置
+novel_chapter_url: 小说内容页的url规则
+novel_chapter_title: 如果没有目录页，此项表示小说的章节名在文中对应的正则式，此时需要自行截取，并将其存储为文本文件；如果有目录页，则此项表示小说章节名在内容页中的jsoup解析式
+novel_chapter_title_replace: 小说章节名的删除内容
+novel_content: 小说文章内容所在的位置
+novel_content_replace: 小说文章中需要删除的内容
+novel_content_type: 小说内容页是否分页 0表示不分页，1表示分页
+novel_content_next: 当小说内容页是分页显示时，此项有效。内容页中的下一页所在位置
+novel_content_next_text: 下一页连接所在的属性值
+novel_content_next_url: 当小说内容页分页显示时，此项有效。小说内容页的链接规则
+novel_chapter_next: 小说内容页中下一章所在位置
+novel_chapter_next_type: 内容页分页显示时，此项有效表示下一页与下一章所在位置是否相同。0表示不同，1表示相同，
+novel_chapter_next_text: 小说下一章连接所在的属性值，空表示选择文本

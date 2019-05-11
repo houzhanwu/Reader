@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WebsiteConfigDao">
+    <insert id="insert" keyColumn="website_id" keyProperty="websiteId" parameterType="entity.WebsiteConfigPO" useGeneratedKeys="true">
+        insert into website_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="website != null">
+                website,
+            </if>
+            <if test="websiteName != null">
+                website_name,
+            </if>
+            <if test="websiteUrl != null">
+                website_url,
+            </if>
+            <if test="novelDetail != null">
+                novel_detail,
+            </if>
+            <if test="novelTitle != null">
+                novel_title,
+            </if>
+            <if test="novelTitleReplace != null">
+                novel_title_replace,
+            </if>
+            <if test="novelAuthor != null">
+                novel_author,
+            </if>
+            <if test="novelAuthorReplace != null">
+                novel_author_replace,
+            </if>
+            <if test="novelState != null">
+                novel_state,
+            </if>
+            <if test="novelStateReplace != null">
+                novel_state_replace,
+            </if>
+            <if test="novelStateEnd != null">
+                novel_state_end,
+            </if>
+            <if test="novelStateNotEnd != null">
+                novel_state_not_end,
+            </if>
+            <if test="novelDescription != null">
+                novel_description,
+            </if>
+            <if test="novelDescriptionReplace != null">
+                novel_description_replace,
+            </if>
+            <if test="novelCategory != null">
+                novel_category,
+            </if>
+            <if test="novelCategoryReplace != null">
+                novel_category_replace,
+            </if>
+            <if test="novelCatalogUrl != null">
+                novel_catalog_url,
+            </if>
+            <if test="novelCatalogType != null">
+                novel_catalog_type,
+            </if>
+            <if test="novelCatalogNext != null">
+                novel_catalog_next,
+            </if>
+            <if test="novelCatalogNextText != null">
+                novel_catalog_next_text,
+            </if>
+            <if test="novelCatalogList != null">
+                novel_catalog_list,
+            </if>
+            <if test="novelCatalogListText != null">
+                novel_catalog_list_text,
+            </if>
+            <if test="novelChapterUrl != null">
+                novel_chapter_url,
+            </if>
+            <if test="novelChapterTitle != null">
+                novel_chapter_title,
+            </if>
+            <if test="novelChapterTitleReplace != null">
+                novel_chapter_title_replace,
+            </if>
+            <if test="novelContent != null">
+                novel_content,
+            </if>
+            <if test="novelContentReplace != null">
+                novel_content_replace,
+            </if>
+            <if test="novelContentType != null">
+                novel_content_type,
+            </if>
+            <if test="novelContentNext != null">
+                novel_content_next,
+            </if>
+            <if test="novelContentNextUrl != null">
+                novel_content_next_url,
+            </if>
+            <if test="novelContentNextText != null">
+                novel_content_next_text,
+            </if>
+            <if test="novelChapterNext != null">
+                novel_chapter_next,
+            </if>
+            <if test="novelChapterNextType != null">
+                novel_chapter_next_type,
+            </if>
+            <if test="novelChapterNextText != null">
+                novel_chapter_next_text,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="website != null">
+                #{website,jdbcType=VARCHAR},
+            </if>
+            <if test="websiteName != null">
+                #{websiteName,jdbcType=VARCHAR},
+            </if>
+            <if test="websiteUrl != null">
+                #{websiteUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelDetail != null">
+                #{novelDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="novelTitle != null">
+                #{novelTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="novelTitleReplace != null">
+                #{novelTitleReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelAuthor != null">
+                #{novelAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="novelAuthorReplace != null">
+                #{novelAuthorReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelState != null">
+                #{novelState,jdbcType=VARCHAR},
+            </if>
+            <if test="novelStateReplace != null">
+                #{novelStateReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelStateEnd != null">
+                #{novelStateEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="novelStateNotEnd != null">
+                #{novelStateNotEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="novelDescription != null">
+                #{novelDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="novelDescriptionReplace != null">
+                #{novelDescriptionReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCategory != null">
+                #{novelCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCategoryReplace != null">
+                #{novelCategoryReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogUrl != null">
+                #{novelCatalogUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogType != null">
+                #{novelCatalogType,jdbcType=BIT},
+            </if>
+            <if test="novelCatalogNext != null">
+                #{novelCatalogNext,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogNextText != null">
+                #{novelCatalogNextText,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogList != null">
+                #{novelCatalogList,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogListText != null">
+                #{novelCatalogListText,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterUrl != null">
+                #{novelChapterUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterTitle != null">
+                #{novelChapterTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterTitleReplace != null">
+                #{novelChapterTitleReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContent != null">
+                #{novelContent,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentReplace != null">
+                #{novelContentReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentType != null">
+                #{novelContentType,jdbcType=BIT},
+            </if>
+            <if test="novelContentNext != null">
+                #{novelContentNext,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentNextUrl != null">
+                #{novelContentNextUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentNextText != null">
+                #{novelContentNextText,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterNext != null">
+                #{novelChapterNext,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterNextType != null">
+                #{novelChapterNextType,jdbcType=BIT},
+            </if>
+            <if test="novelChapterNextText != null">
+                #{novelChapterNextText,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <select id="getAll" resultType="entity.WebsiteConfigPO">
+        select  *  from website_config
+    </select>
+    <select id="getAllWebsite" resultType="entity.WebsiteConfigPO">
+        select website_id,website,website_name from website_config
+    </select>
+    <select id="findById" parameterType="long" resultType="entity.WebsiteConfigPO">
+        select * from website_config where website_id = #{id}
+    </select>
+    <update id="update" parameterType="entity.WebsiteConfigPO">
+        update website_config
+        <set>
+            <if test="website != null">
+                website = #{website,jdbcType=VARCHAR},
+            </if>
+            <if test="websiteName != null">
+                website_name = #{websiteName,jdbcType=VARCHAR},
+            </if>
+            <if test="websiteUrl != null">
+                website_url = #{websiteUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelDetail != null">
+                novel_detail = #{novelDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="novelTitle != null">
+                novel_title = #{novelTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="novelTitleReplace != null">
+                novel_title_replace = #{novelTitleReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelAuthor != null">
+                novel_author = #{novelAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="novelAuthorReplace != null">
+                novel_author_replace = #{novelAuthorReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelState != null">
+                novel_state = #{novelState,jdbcType=VARCHAR},
+            </if>
+            <if test="novelStateReplace != null">
+                novel_state_replace = #{novelStateReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelStateEnd != null">
+                novel_state_end = #{novelStateEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="novelStateNotEnd != null">
+                novel_state_not_end = #{novelStateNotEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="novelDescription != null">
+                novel_description = #{novelDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="novelDescriptionReplace != null">
+                novel_description_replace = #{novelDescriptionReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCategory != null">
+                novel_category = #{novelCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCategoryReplace != null">
+                novel_category_replace = #{novelCategoryReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogUrl != null">
+                novel_catalog_url = #{novelCatalogUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogType != null">
+                novel_catalog_type = #{novelCatalogType,jdbcType=BIT},
+            </if>
+            <if test="novelCatalogNext != null">
+                novel_catalog_next = #{novelCatalogNext,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogNextText != null">
+                novel_catalog_next_text = #{novelCatalogNextText,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogList != null">
+                novel_catalog_list = #{novelCatalogList,jdbcType=VARCHAR},
+            </if>
+            <if test="novelCatalogListText != null">
+                novel_catalog_list_text = #{novelCatalogListText,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterUrl != null">
+                novel_chapter_url = #{novelChapterUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterTitle != null">
+                novel_chapter_title = #{novelChapterTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterTitleReplace != null">
+                novel_chapter_title_replace = #{novelChapterTitleReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContent != null">
+                novel_content = #{novelContent,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentReplace != null">
+                novel_content_replace = #{novelContentReplace,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentType != null">
+                novel_content_type = #{novelContentType,jdbcType=BIT},
+            </if>
+            <if test="novelContentNext != null">
+                novel_content_next = #{novelContentNext,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentNextUrl != null">
+                novel_content_next_url = #{novelContentNextUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="novelContentNextText != null">
+                novel_content_next_Text = #{novelContentNextText,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterNext != null">
+                novel_chapter_next = #{novelChapterNext,jdbcType=VARCHAR},
+            </if>
+            <if test="novelChapterNextType != null">
+                novel_chapter_next_type = #{novelChapterNextType,jdbcType=BIT},
+            </if>
+            <if test="novelChapterNextText != null">
+                novel_chapter_next_text = #{novelChapterNextText,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+        </set>
+        where website_id = #{websiteId,jdbcType=BIGINT}
+    </update>
+</mapper>

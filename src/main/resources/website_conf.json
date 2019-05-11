@@ -1,0 +1,60 @@
+[{
+    "website":"https://m.biquge.info/?.*",
+    "website_name":"笔趣阁：biquge.info",
+    "website_id": 0,
+
+    "novel_detail":"https://m.biquge.info/\\d+_\\d+/?$",
+    "novel_title":"html > body > div.cover > div.block > div.block_txt2 > h2 > a",
+    "novel_title_replace":"",
+    "novel_author":"html > body > div.cover > div.block > div.block_txt2 > p",
+    "novel_author_replace":"作者：",
+    "novel_description":"html > body > div.cover > div.intro_info",
+    "novel_description_replace":"最新章节推荐地址：.*$",
+
+    "novel_catalog_url":"https://m.biquge.info/\\d+_\\d+/?(index_\\d+?.html)?$",
+    "novel_catalog_type":1,
+    "novel_catalog_next":"html > body > div.cover > div.listpage > span.right > a.onclik",
+    "novle_catalog_next_text":"abs:href",
+    "novel_catalog_list":"html > body > div.cover > ul.chapter:last-of-type > li > a",
+    "novel_catalog_list_text":"abs:href",
+
+    "novel_chapter_url":"https://m.biquge.info/\\d+_\\d+$/\\d+\\.html$",
+    "novel_chapter_title":"html > body > header > div.zhong",
+    "novel_chapter_title_replace":"",
+    "novel_content":"html > body > section.zj > articll#nr",
+    "novel_content_replace":"",
+    "novel_content_type":"0",
+    "novel_chapter_next":"html > body > section.zj > div:last-of-type > a.dise:eq(2)",
+    "novel_chapter_next_text":"abs:href"
+},{
+    "website": "http://m.biqugew.com/?.*",
+    "website_name": "笔趣阁：biqugew.com",
+    "website_id": 0,
+
+    "novel_detail": "http://m.biqugew.com/book/\\d+/?$",
+    "novel_title": "html > body > div.cover > div.block > div.block_txt2 > h2 > a",
+    "novel_title_replace": "",
+    "novel_author": "html > body > div.cover > div.block > div.block_txt2 > p > a",
+    "novel_author_replace": "",
+    "novel_description": "html > body > div.cover > div.intro_info",
+    "novel_description_replace": "",
+
+    "novel_catalog_url": "http://m.biqugew.com/0/\\d+(_\\d+)?/?$",
+    "novel_catalog_type": 1,
+    "novel_catalog_next": "html > body > div.page > a:matchesOwn(下一页)",
+    "novle_catalog_next_text": "abs:href",
+    "novel_catalog_list": "html > body > div.cover > ul.chapter > li > a",
+    "novel_catalog_list_text": "abs:href",
+
+    "novel_chapter_url": "http://m.biqugew.com/book/\\d+/\\d+\\.html$",
+    "novel_chapter_title": "html > body > div > div#nr_title",
+    "novel_chapter_title_replace": "（第\\d+/\\d+页）",
+    "novel_content": "html > body > div > div#nr > div#nr1",
+    "novel_content_replace": "\n\n本章未完，请点击下一页继续阅读》》",
+    "novel_content_type": "1",
+    "novel_content_next":"html > body > div > div > table > tbody > tr > td.next > a#pb_next",
+    "novel_content_next_url":"http://m.biqugew.com/book/\\d+/\\d+_\\d+\\.html$",
+    "novel_chapter_next": "html > body > div > div > table > tbody > tr > td.next > a#pb_next",
+    "novel_chapter_next_type":1,
+    "novel_chapter_next_text": "abs:href"
+}]

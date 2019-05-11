@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/bookshelf/bookshelf",
+    "pages/reading/reading",
+    "pages/search/search"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#8ed145",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "阅读者",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [{
+        "pagePath": "pages/bookshelf/bookshelf",
+        "text": "书架",
+        "iconPath": "source/icon/bookshelf.png",
+        "selectedIconPath": "source/icon/select_bookshelf.png"
+      },{
+      "pagePath": "pages/search/search",
+      "text": "搜索",
+      "iconPath": "source/icon/search.png",
+      "selectedIconPath": "source/icon/select_search.png"
+    }],
+    "color": "#2c2c2c",
+    "selectedColor": "#8ed145",
+    "backgroundColor": "#ffffff"
+  }
+}
