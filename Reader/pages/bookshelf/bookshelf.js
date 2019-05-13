@@ -14,6 +14,9 @@ Page({
   onLoad: function(options) {
     this.getBookshelf()
   },
+  onShow: function(o) {
+    this.getBookshelf()
+  },
   getBookshelf: function() {
     var bookshelf = wx.getStorageSync('bookshelf')
     this.setData({
