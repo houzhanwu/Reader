@@ -79,5 +79,15 @@ public class GetPage {
             jedis.close();
         }
     }
+    public static Document getDocumentRealTime(Long id, String url) {
+        try {
+            Document document = Jsoup.connect(url).get();
+            String page = document.outerHtml();
+            return document;
+        } catch (IOException e) {
+            logger.error("页面获取时错误：-----------------> \n", e);
+            return null;
+        }
+    }
 
 }

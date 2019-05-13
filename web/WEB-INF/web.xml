@@ -3,17 +3,45 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <servlet>
-        <servlet-name>WebsiteConfig</servlet-name>
-        <servlet-class>controller.WebsiteConfigServlet</servlet-class>
-    </servlet>
-    <!--设置为默认的servlet，即，所有处理不了的URL都通过此-->
-    <servlet-mapping>
-        <servlet-name>WebsiteConfig</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>WebsiteConfig</servlet-name>-->
+        <!--<servlet-class>controller.WebsiteConfigServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>WebsiteConfig</servlet-name>-->
+        <!--<url-pattern>/</url-pattern>-->
+    <!--</servlet-mapping>-->
     
     <servlet>
-        <servlet-name></servlet-name>
+        <servlet-name>NovelServlet</servlet-name>
+        <servlet-class>controller.NovelServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>NovelServlet</servlet-name>
+        <url-pattern>/getNovel</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ContentServlet</servlet-name>
+        <servlet-class>controller.ContentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContentServlet</servlet-name>
+        <url-pattern>/getContent</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CatalogServlet</servlet-name>
+        <servlet-class>controller.CatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CatalogServlet</servlet-name>
+        <url-pattern>/getCatalog</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>controller.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -239,7 +239,9 @@ public class PageParse {
     public ContentDTO parseChapterPage(String url) throws Exception {
         if (!url.matches(websiteConfig.getNovelChapterUrl()))
             throw new Exception("内容页不匹配URL规则");
-        Document document = GetPage.getDocument(websiteConfig.getWebsiteId(), url);
+        Document document = GetPage.getDocumentRealTime(websiteConfig.getWebsiteId(), url);
+        System.out.println("aaa" + document.charset());
+        System.out.println(document.outerHtml());
         Elements elements = document.select(websiteConfig.getNovelContent());
         if (elements.size() > 1 || elements.isEmpty())
             throw new Exception("网站的内容页内容解析器配置有错误");
@@ -254,7 +256,7 @@ public class PageParse {
             element = elements.get(0);
             String nextUrl = element.attr("abs:"+websiteConfig.getNovelContentNextText());
             while (nextUrl.matches(websiteConfig.getNovelContentNextUrl())){
-                Document nextPage = GetPage.getDocument(websiteConfig.getWebsiteId(), nextUrl);
+                Document nextPage = GetPage.getDocumentRealTime(websiteConfig.getWebsiteId(), nextUrl);
                 Elements list = nextPage.select(websiteConfig.getNovelContent());
                 Element e = list.get(0);
                 String next = e.wholeText().replace(websiteConfig.getNovelContentReplace(), "");

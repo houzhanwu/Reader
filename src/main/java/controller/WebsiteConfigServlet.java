@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -36,6 +37,9 @@ public class WebsiteConfigServlet extends HttpServlet {
 
         resp.setContentType("text/html; charset=UTF-8");
         resp.setCharacterEncoding("utf-8");
+        PrintWriter out = resp.getWriter();
+        out.println("ddd");
+        out.close();
     }
 
     @Override

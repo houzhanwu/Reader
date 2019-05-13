@@ -4,9 +4,9 @@ App({
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function () {
-    wx.setStorageSync({
-      key: 'baseurl',
-      data: '127.0.0.1:17080/',
+    wx.setStorage({
+      key: 'baseUrl',
+      data: 'http://192.168.1.116:17080/',
     })
   },
 
@@ -29,5 +29,7 @@ App({
    */
   onError: function (msg) {
     
-  }
+  },
+
+  baseUrl: 'http://192.168.1.116:17080/'
 })

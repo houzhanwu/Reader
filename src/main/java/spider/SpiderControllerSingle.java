@@ -60,26 +60,26 @@ public class SpiderControllerSingle {
         this.threadNum = threadNum;
     }
 
-    public static void main(String[] args) {
-        SqlSession session = ConnectFactory.connectMysql();
-        try {
-            WebsiteConfigDao websiteConfigDao = DaoFactory.getWebsiteConfigDao(session);
-            List<WebsiteConfigPO> list = null;
-            try {
-                list = websiteConfigDao.getAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            for (WebsiteConfigPO websiteConfigPO : list) {
-                new Thread(()->{
-                    SpiderControllerSingle spiderControllerSingle = new SpiderControllerSingle(websiteConfigPO);
-                    spiderControllerSingle.controlSpider();
-                }, websiteConfigPO.getWebsiteName()+"的线程").start();
-            }
-        }finally {
-            session.close();
-        }
-    }
+//    public static void main(String[] args) {
+//        SqlSession session = ConnectFactory.connectMysql();
+//        try {
+//            WebsiteConfigDao websiteConfigDao = DaoFactory.getWebsiteConfigDao(session);
+//            List<WebsiteConfigPO> list = null;
+//            try {
+//                list = websiteConfigDao.getAll();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//            for (WebsiteConfigPO websiteConfigPO : list) {
+//                new Thread(()->{
+//                    SpiderControllerSingle spiderControllerSingle = new SpiderControllerSingle(websiteConfigPO);
+//                    spiderControllerSingle.controlSpider();
+//                }, websiteConfigPO.getWebsiteName()+"的线程").start();
+//            }
+//        }finally {
+//            session.close();
+//        }
+//    }
 
     /**
      * 爬虫主控制台

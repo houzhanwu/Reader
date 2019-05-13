@@ -1,7 +1,7 @@
 <view wx:if="{{showPage}}" class="reader" style='background: {{backgroundColor}}'>
-  <scroll-view catchtap='openMenu' scroll-with-animation='true' scroll-top='100' enable-back-to-top='true' scroll-y='true' class='read_container' style='height:{{winHeight}}rpx'>
+  <scroll-view catchtap='openMenu' scroll-with-animation='true' scroll-top='{{scrollTop}}' enable-back-to-top='true' scroll-y='true' class='read_container' style='height:{{winHeight}}rpx'>
     <view class='chapter_title' style='font-size:{{titleSize}};color:{{color}}'>{{title}}</view>
-    <view class='chapter_content' style='font-size:{{contentSize}};color:{{color}};'>{{text}}</view>
+    <view class='chapter_content' style='font-size:{{contentSize}};color:{{color}};'>{{content}}</view>
     <view class='chapterLink'>
       <button catchtap='goPrev' size='mini'>上一章</button>
       <button catchtap='showChapter' size='mini'>目录</button>
@@ -13,11 +13,11 @@
     <view catchtap='toggleDark' class="dark">{{isDark ? '正常' : '夜间'}}</view>
     <view catchtap='toggleHuyan' class="huyan">{{isHuyan ? '正常' : '护眼'}}</view>
   </view>
-  <scroll-view wx:if="{{showChapter}}" class='chapterContainer' scroll-with-animation='true' scroll-top='100' enable-back-to-top='true' scroll-y='true' style='height:{{winHeight}}rpx'>
+  <scroll-view wx:if="{{showCatalog}}" class='chapterContainer' scroll-with-animation='true'  enable-back-to-top='true' scroll-y='true' style='height:{{winHeight}}rpx'>
     <view class='chapter_topic'>
       <view class='chapter_topic_title'>目录</view>
-      <view catchtap='showChapter' class='chapter_topic_hide'>收起</view>
+      <view catchtap='closeChapter' class='chapter_topic_hide'>收起</view>
     </view>
-    <view catchtap='pickChapter' data-link="{{item.url}}" data-indexpage="{{index}}" class='chapter_item' wx:key="{{index}}" wx:for="{{chapters}}">{{item.title}}</view>
+    <view catchtap='pickChapter' data-link="{{item.url}}" data-indexpage="{{index}}" class='chapter_item' wx:key="{{index}}" wx:for="{{chapters}}">{{index+1}}：{{item.title}}</view>
   </scroll-view>
 </view>

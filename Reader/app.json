@@ -2,7 +2,8 @@
   "pages": [
     "pages/bookshelf/bookshelf",
     "pages/reading/reading",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/bookinfo/bookinfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#8ed145",
@@ -14,17 +15,20 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/bookshelf/bookshelf",
         "text": "书架",
         "iconPath": "source/icon/bookshelf.png",
         "selectedIconPath": "source/icon/select_bookshelf.png"
-      },{
-      "pagePath": "pages/search/search",
-      "text": "搜索",
-      "iconPath": "source/icon/search.png",
-      "selectedIconPath": "source/icon/select_search.png"
-    }],
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "source/icon/search.png",
+        "selectedIconPath": "source/icon/select_search.png"
+      }
+    ],
     "color": "#2c2c2c",
     "selectedColor": "#8ed145",
     "backgroundColor": "#ffffff"
