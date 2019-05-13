@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <!--<servlet>-->
-        <!--<servlet-name>WebsiteConfig</servlet-name>-->
-        <!--<servlet-class>controller.WebsiteConfigServlet</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>WebsiteConfig</servlet-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet>
+        <servlet-name>WebsiteConfig</servlet-name>
+        <servlet-class>controller.WebsiteConfigServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WebsiteConfig</servlet-name>
+        <url-pattern>/spider</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>NovelServlet</servlet-name>

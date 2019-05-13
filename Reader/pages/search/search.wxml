@@ -3,7 +3,7 @@
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">
         <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-        <input type="text" class="weui-search-bar__input" placeholder="尽量将标题输入准确" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <input type="text" class="weui-search-bar__input" placeholder="尽量将标题输入准确" value="{{inputVal}}" focus="{{inputShowed}}" bindconfirm="inputTyping" />
         <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
           <icon type="clear" size="14"></icon>
         </view>
@@ -16,7 +16,7 @@
     <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>
   <view class="weui-panel">
-    <navigator wx:for="{{result}}" wx:key="{{index}}" class="weui-media-box weui-media-box_text" url='{{"../bookinfo/bookinfo?book_id=" + item.novelId}}'>
+    <view wx:for="{{result}}" wx:key="{{index}}" catchtap="jump" data-object="{{item}}" class="weui-media-box weui-media-box_text">
       <view class="weui-media-box__title weui-media-box__title_in-text">{{item.title}}</view>
       <view class="weui-media-box__info">
         <view class="weui-media-box__info__meta">{{item.author}}</view>
@@ -24,6 +24,6 @@
         <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.isEnd==1 ? '已完结' : '连载中'}}</view>
       </view>
       <view class="weui-media-box__desc">{{item.description}}</view>
-    </navigator>
+    </view>
   </view>
 </view>

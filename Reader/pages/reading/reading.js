@@ -47,24 +47,23 @@ Page({
       title: '点击呼出菜单',
       mask: true
     });
-    // this.setData({
-    //   book_id: options.book_id,
-    //   website_id: options.website_id, //小说网站对应的ID
-    //   index_chapter: options.index_chapter, //章节在目录中的index
-    //   chapter_url: options.chapter_url, //当前章节的url
-    //   book_title: options.book_title, //小说的标题
-    // })
     this.setData({
-      book_id: 433,
-      website_id: 9, //小说网站对应的ID
-      index_chapter: 0, //章节在目录中的index
-      book_title: '美食供应商', //小说的标题
+      book_id: options.book_id,
+      website_id: options.website_id, //小说网站对应的ID
+      index_chapter: options.index_chapter, //章节在目录中的index
+
+      book_title: options.book_title, //小说的标题
     })
+    // this.setData({
+    //   book_id: 433,
+    //   website_id: 9, //小说网站对应的ID
+    //   index_chapter: 0, //章节在目录中的index
+    //   book_title: '美食供应商', //小说的标题
+    // })
     wx.setNavigationBarTitle({
       title: this.data.book_title
     })
     this.getChapterList();
-    this.getChapterContent(this.data.chapters[this.data.index_chapter].url)
     var page = this
     wx.getSystemInfo({
       success(res) {
@@ -234,17 +233,7 @@ Page({
           title: res.data.title,
         })
         //保存看的书信息
-        bookshelf = wx.getStorageSync("bookshelf")
-        for (var i = 0; i < bookshelf.length; i++) {
-          if (bookshelf[i].book_id = this.data.book_id) {
-            bookshelf[i].index_chapter = this.data.index_chapter
-            bookshelf[i].chapter_title = this.data.title
-            bookshelf[i].read_num = this.data.index_chapter + 1
-            bookshelf[i].chapter_url = this.data.chapter_url
-            wx.setStorage('bookshelf', bookshelf)
-            break
-          }
-        }
+        var book_info = wx.getStorageSync(page.data.book_id)
       }
     })
     
@@ -267,7 +256,7 @@ Page({
         page.setData({
           chapters: res.data,
         })
-        console.log(res.data)
+        page.getChapterContent(res.data[page.data.index_chapter].url)
       },
     })
     
@@ -275,8 +264,8 @@ Page({
 
   //点击目录列表
   pickChapter: function (o) {
-    var index = o.target.dataset.indexpage;
-    var link = o.target.dataset.link;
+    var index = o.currentTarget.dataset.indexpage;
+    var link = o.currentTarget.dataset.link;
     this.setData({
       index_chapter: index,
       chapter_url: link,

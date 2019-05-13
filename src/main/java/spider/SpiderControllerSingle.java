@@ -47,7 +47,7 @@ public class SpiderControllerSingle {
     /**
      * 允许为空的次数
      */
-    private final static int MAX_NUM = 10;
+    private final static int MAX_NUM = 20;
 
 
     public SpiderControllerSingle(WebsiteConfigPO websiteConfigPO) {
@@ -64,17 +64,13 @@ public class SpiderControllerSingle {
 //        SqlSession session = ConnectFactory.connectMysql();
 //        try {
 //            WebsiteConfigDao websiteConfigDao = DaoFactory.getWebsiteConfigDao(session);
-//            List<WebsiteConfigPO> list = null;
+//            WebsiteConfigPO websiteConfigPO = null;
 //            try {
-//                list = websiteConfigDao.getAll();
+//                websiteConfigPO = websiteConfigDao.findByID(9l);
+//                SpiderControllerSingle spiderControllerSingle = new SpiderControllerSingle(websiteConfigPO);
+//                spiderControllerSingle.controlSpider();
 //            } catch (SQLException e) {
 //                e.printStackTrace();
-//            }
-//            for (WebsiteConfigPO websiteConfigPO : list) {
-//                new Thread(()->{
-//                    SpiderControllerSingle spiderControllerSingle = new SpiderControllerSingle(websiteConfigPO);
-//                    spiderControllerSingle.controlSpider();
-//                }, websiteConfigPO.getWebsiteName()+"的线程").start();
 //            }
 //        }finally {
 //            session.close();
