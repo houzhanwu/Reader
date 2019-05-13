@@ -4,10 +4,11 @@ App({
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function () {
-    wx.setStorage({
-      key: 'baseUrl',
-      data: 'http://192.168.1.116:17080/',
-    })
+    var bookshelf = wx.getStorageSync('bookshelf')
+    if (bookshelf === undefined || bookshelf === null || bookshelf == ''){
+      wx.setStorageSync('bookshelf', [{book_id:-1}])
+    }
+    bookshelf = wx.getStorageSync('bookshelf')
   },
 
   /**
@@ -28,8 +29,8 @@ App({
    * 当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
    */
   onError: function (msg) {
-    
   },
 
-  baseUrl: 'http://192.168.1.116:17080/'
+  baseUrl: 'https://wx.henghengya.cn/',
+  bookshelf: [],
 })

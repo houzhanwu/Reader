@@ -1,13 +1,16 @@
-<view class="container">
-  <view class='bookshelfContainer'>
-    <view wx:if="{{!bookshelf.length}}" class='noBooks'>
-      主人还没收藏书籍哦，请去书城收藏吧！
+<view class='bookshelfContainer'>
+  <view wx:if="{{bookshelf.length == 1}}" class='noBooks'>
+    主人还没收藏书籍哦，请去书城收藏吧！
+  </view>
+  <view class="weui-panel">
+    <view wx:if="{{index > 0}}" wx:for="{{bookshelf}}" wx:key="{{index}}" catchtap="jump" data-object="{{item}}" class="weui-media-box weui-media-box_text">
+      <view class="weui-media-box__title weui-media-box__title_in-text">{{item.book_title}}</view>
+      <view class="weui-media-box__info">
+        <view class="weui-media-box__info__meta">{{item.book_author}}</view>
+        <view class="weui-media-box__info__meta">{{item.book_category}}</view>
+        <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.book_isEnd==1 ? '已完结' : '连载中'}}</view>
+      </view>
+      <view class="weui-media-box__desc">{{item.book_description}}</view>
     </view>
-    <navigator url='{{"../reading/reading?book_id=" + item.book_id + "&website_id=" + item.website_id + "&index_chapter=" + item.index_chapter + "&book_title=" + item.book_title + "&chapter_url=" + item.chapter_url}}' wx:for="{{bookshelf}}" wx:key="{{index}}">
-      <text class='name'>{{item.book_title}}</text>
-      <text>{{item.book_author}}</text>
-      <text>{{item.book_author}}</text>
-      <view class='readNum'>读到第{{item.read_num}}章：{{item.chapter_title}}</view>
-    </navigator>
   </view>
 </view>

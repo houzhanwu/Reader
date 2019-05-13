@@ -9,7 +9,7 @@ Page({
     //页面信息
     book_id: '', //存储小说表中的ID
     website_id: "", //小说网站对应的ID
-    index_chapter: "", //章节在目录中的index
+    index_chapter: 0, //章节在目录中的index
     chapter_url: "", //当前章节的url
     book_title: '', //小说的标题
     chapters: '', // 存储小说目录信息
@@ -51,15 +51,8 @@ Page({
       book_id: options.book_id,
       website_id: options.website_id, //小说网站对应的ID
       index_chapter: options.index_chapter, //章节在目录中的index
-
       book_title: options.book_title, //小说的标题
     })
-    // this.setData({
-    //   book_id: 433,
-    //   website_id: 9, //小说网站对应的ID
-    //   index_chapter: 0, //章节在目录中的index
-    //   book_title: '美食供应商', //小说的标题
-    // })
     wx.setNavigationBarTitle({
       title: this.data.book_title
     })
@@ -80,11 +73,8 @@ Page({
     });
 
     setTimeout(() => {
-      wx.hideLoading()
-      page.setData({
-        showPage: true,
-      })
-    }, 3000);
+      
+    }, 4000);
 
   },
 
@@ -101,7 +91,6 @@ Page({
       showMenu: false,
       scrollTop: 0
     })
-    console.log(this.data.chapters)
   },
   closeChapter: function(options) {
     this.setData({
@@ -117,8 +106,9 @@ Page({
         mask: true
       });
     } else {
+      var index = parseInt(this.data.index_chapter) - parseInt(1)
       this.setData({
-        index_chapter: this.data.index_chapter - 1,
+        index_chapter: index,
         scrollTop: 0
       });
       if (this.data.chapters[this.data.index_chapter]) {
@@ -138,12 +128,15 @@ Page({
         mask: true
       });
     } else {
+      var index = parseInt(this.data.index_chapter) +parseInt(1)
+      console.log(index)
       this.setData({
-        index_chapter: this.data.index_chapter + 1,
+        index_chapter:index,
         scrollTop: 0
       });
-      if (this.data.chapters[this.data.index_chapter]) {
-        this.getChapterContent(this.data.chapters[this.data.index_chapter].url);
+      if (this.data.chapters[index]) {
+        this.getChapterContent(this.data.chapters[index].url);
+        this.setPageStorage(index)
       }
     }
   },
@@ -206,9 +199,8 @@ Page({
     }
   }, 
 
- //下载页面
+  //下载页面
   getChapterContent: function (link) {
-    console.log(getApp().baseUrl + "getContent")
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -224,19 +216,36 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
-      method: 'GET',
+      method: 'POST',
       success(res) {
         wx.hideLoading(),
-        console.log(res.data)
         page.setData({
           content: res.data.content,
           title: res.data.title,
+          showPage: true
         })
-        //保存看的书信息
-        var book_info = wx.getStorageSync(page.data.book_id)
+        page.setPageStorage()
       }
     })
     
+  },
+
+  setPageStorage: function(){
+    //保存看的书信息
+    var bookshelf = wx.getStorageSync('bookshelf')
+    var index = this.data.index_chapter
+    var title = this.data.title 
+    for (var i = 0; i < bookshelf.length; i++) {
+      if (bookshelf[i].book_id == this.data.book_id) {
+        bookshelf[i].index_chapter = index
+        bookshelf[i].chapter_title = title
+        wx.setStorageSync('bookshelf', bookshelf)
+        break
+      }
+    }
+    console.log(bookshelf)
+    console.log("--------------")
+    console.log(wx.getStorageSync('bookshelf'))
   },
 
   //下载章节列表
@@ -272,5 +281,6 @@ Page({
       showCatalog: false,
     })
     this.getChapterContent(link)
+    this.setPageStorage(index)
   },
 })
