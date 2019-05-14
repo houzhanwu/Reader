@@ -14,7 +14,8 @@ Page({
   hideInput: function() {
     this.setData({
       inputVal: "",
-      inputShowed: false
+      inputShowed: false,
+      result: ''
     });
   },
   clearInput: function() {
