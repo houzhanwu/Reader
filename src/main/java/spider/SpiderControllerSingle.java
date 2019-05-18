@@ -60,22 +60,6 @@ public class SpiderControllerSingle {
         this.threadNum = threadNum;
     }
 
-//    public static void main(String[] args) {
-//        SqlSession session = ConnectFactory.connectMysql();
-//        try {
-//            WebsiteConfigDao websiteConfigDao = DaoFactory.getWebsiteConfigDao(session);
-//            WebsiteConfigPO websiteConfigPO = null;
-//            try {
-//                websiteConfigPO = websiteConfigDao.findByID(9l);
-//                SpiderControllerSingle spiderControllerSingle = new SpiderControllerSingle(websiteConfigPO);
-//                spiderControllerSingle.controlSpider();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }finally {
-//            session.close();
-//        }
-//    }
 
     /**
      * 爬虫主控制台

@@ -3,7 +3,9 @@
     "pages/bookshelf/bookshelf",
     "pages/reading/reading",
     "pages/search/search",
-    "pages/bookinfo/bookinfo"
+    "pages/bookinfo/bookinfo",
+    "pages/list/list",
+    "pages/test/test"
   ],
   "window": {
     "navigationBarBackgroundColor": "#8ed145",
